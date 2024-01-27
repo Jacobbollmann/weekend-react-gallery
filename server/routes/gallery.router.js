@@ -12,7 +12,7 @@ router.put('/like/:id', (req, res) => {
   pool
     .query(dbQuery, [addOne, updateItem])
     .then((result) => {
-      res.send('Item updated:').status(201);
+      res.send('Item updated:').status(200);
     })
     .catch((error) => {
       console.error(error);
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     .query(dbQuery)
     .then((result) => {
       console.log('Getting gallery data:');
-      res.send(result.rows).status(201);
+      res.send(result.rows).status(200);
     })
     .catch((error) => {
       console.error(error);
