@@ -1,15 +1,38 @@
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { fetchItems } from './galleryApi/galleryApi';
 
 function App() {
-    return (
-      <div>
-        <header>
-          <h1>React Gallery</h1>
-        </header>
+  const [galleryItem, setGalleryItem] = useState([]);
 
-        <p>The gallery goes here!</p>
-        <img src="images/goat_small.jpg"/>
-      </div>
-    );
+  const refreshItem = () => {
+    const itemPromise = fetchItems();
+
+    itemPromise
+      .then((response) => {
+        //console.log('Gallery Data:', response.data);
+        setGalleryItem(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('SOMETHING WRONG IN GET');
+      });
+  };
+
+  useEffect(() => {
+    refreshItem();
+  }, []);
+
+  return (
+    <div>
+      <header>
+        <h1>React Gallery</h1>
+      </header>
+
+      <p>The gallery goes here!</p>
+      <img src="images/goat_small.jpg" />
+    </div>
+  );
 }
 
 export default App;
