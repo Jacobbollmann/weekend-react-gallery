@@ -4,7 +4,7 @@ import { useState } from 'react';
 function GalleryItem({ item, refreshItem }) {
   const [details, setDetails] = useState(true);
 
-  const handleDetails = () => {
+  const handleToggle = () => {
     setDetails(!details);
     console.log(details);
   };
@@ -22,13 +22,15 @@ function GalleryItem({ item, refreshItem }) {
   };
 
   return (
-    <>
+    <div data-testid="galleryItem">
+      <h3>{item.title}</h3>
       {details ? (
-        <div data-testid="galleryItem">
-          <h3>{item.title}</h3>
+        <>
           <img src={item.url} />
           <p>Likes: {item.likes}</p>
-          <button onClick={handleDetails}>Details</button>
+          <button data-testid="toggle" onClick={handleToggle}>
+            Details
+          </button>
           <button
             data-testid="like"
             onClick={() => {
@@ -37,13 +39,16 @@ function GalleryItem({ item, refreshItem }) {
           >
             Love It!
           </button>
-        </div>
+        </>
       ) : (
-        <div>
-          <p>Details</p>
-        </div>
+        <>
+          <p data-testid="description">{item.description}</p>
+          <button data-testid="toggle" onClick={handleToggle}>
+            Back
+          </button>
+        </>
       )}
-    </>
+    </div>
   );
 }
 
