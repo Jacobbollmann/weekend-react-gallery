@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchItems } from './galleryApi/galleryApi';
+import GalleryList from '../GalleryList/GalleryList';
 
 function App() {
-  const [galleryItem, setGalleryItem] = useState([]);
+  const [galleryItems, setGalleryItems] = useState([]);
 
   const refreshItem = () => {
     const itemPromise = fetchItems();
@@ -11,7 +12,7 @@ function App() {
     itemPromise
       .then((response) => {
         //console.log('Gallery Data:', response.data);
-        setGalleryItem(response.data);
+        setGalleryItems(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -28,7 +29,7 @@ function App() {
       <header>
         <h1>React Gallery</h1>
       </header>
-
+      <GalleryList galleryItems={galleryItems} />
       <p>The gallery goes here!</p>
       <img src="images/goat_small.jpg" />
     </div>
