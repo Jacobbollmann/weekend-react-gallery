@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchItems } from './galleryApi/galleryApi';
 import GalleryList from '../GalleryList/GalleryList';
+import Header from '../Header/Header';
 
 function App() {
   const [galleryItems, setGalleryItems] = useState([]);
@@ -26,9 +27,7 @@ function App() {
 
   return (
     <div data-testid="app">
-      <header>
-        <h1>React Gallery</h1>
-      </header>
+      <Header />
       <GalleryList galleryItems={galleryItems} />
     </div>
   );
