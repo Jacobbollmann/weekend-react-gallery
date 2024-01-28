@@ -30,8 +30,6 @@ function App() {
         <h1>React Gallery</h1>
       </header>
       <GalleryList galleryItems={galleryItems} />
-      <p>The gallery goes here!</p>
-      <img src="images/goat_small.jpg" />
     </div>
   );
 }
