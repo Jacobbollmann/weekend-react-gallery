@@ -28,7 +28,7 @@ function App() {
   return (
     <div data-testid="app">
       <Header />
-      <GalleryList galleryItems={galleryItems} />
+      <GalleryList galleryItems={galleryItems} refreshItem={refreshItem} />
     </div>
   );
 }

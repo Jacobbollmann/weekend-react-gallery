@@ -1,12 +1,12 @@
 import GalleryItem from '../GalleryItem/GalleryItem';
 
-function GalleryList({ galleryItems }) {
+function GalleryList({ galleryItems, refreshItem }) {
   return (
     <div data-testid="galleryList">
       {galleryItems.map((item) => {
         return (
           <div key={item.id}>
-            <GalleryItem item={item} />
+            <GalleryItem item={item} refreshItem={refreshItem} />
           </div>
         );
       })}

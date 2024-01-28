@@ -5,9 +5,10 @@ const router = express.Router();
 // PUT /gallery/like/:id
 router.put('/like/:id', (req, res) => {
   const updateItem = parseInt(req.params.id);
-  const addOne = +1;
+  const addOne = 1;
   console.log('Updating item:', updateItem);
-  const dbQuery = 'UPDATE "gallery" SET "likes" = $1 WHERE "id" = $2;';
+  const dbQuery =
+    'UPDATE "gallery" SET "likes" = "likes" + $1 WHERE "id" = $2;';
 
   pool
     .query(dbQuery, [addOne, updateItem])
