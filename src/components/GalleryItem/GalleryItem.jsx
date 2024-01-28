@@ -1,6 +1,14 @@
 import { likeUpdate } from '../App/galleryApi/galleryApi';
+import { useState } from 'react';
 
 function GalleryItem({ item, refreshItem }) {
+  const [details, setDetails] = useState(true);
+
+  const handleDetails = () => {
+    setDetails(!details);
+    console.log(details);
+  };
+
   const handleLikeUpdate = (id) => {
     console.log('Like Button ID:', id);
     likeUpdate(id)
@@ -14,19 +22,28 @@ function GalleryItem({ item, refreshItem }) {
   };
 
   return (
-    <div data-testid="galleryItem">
-      <h3>{item.title}</h3>
-      <img src={item.url} />
-      <p>Likes: {item.likes}</p>
-      <button
-        data-testid="like"
-        onClick={() => {
-          handleLikeUpdate(item.id);
-        }}
-      >
-        Love It!
-      </button>
-    </div>
+    <>
+      {details ? (
+        <div data-testid="galleryItem">
+          <h3>{item.title}</h3>
+          <img src={item.url} />
+          <p>Likes: {item.likes}</p>
+          <button onClick={handleDetails}>Details</button>
+          <button
+            data-testid="like"
+            onClick={() => {
+              handleLikeUpdate(item.id);
+            }}
+          >
+            Love It!
+          </button>
+        </div>
+      ) : (
+        <div>
+          <p>Details</p>
+        </div>
+      )}
+    </>
   );
 }
 
