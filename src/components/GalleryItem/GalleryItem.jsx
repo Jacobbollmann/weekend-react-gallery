@@ -1,5 +1,8 @@
-import { likeUpdate } from '../App/galleryApi/galleryApi';
+import { likeUpdate } from '../../galleryApi/galleryApi';
 import { useState } from 'react';
+
+//style
+import './GalleryItem.css';
 
 function GalleryItem({ item, refreshItem }) {
   const [details, setDetails] = useState(true);
@@ -22,7 +25,7 @@ function GalleryItem({ item, refreshItem }) {
   };
 
   return (
-    <div data-testid="galleryItem">
+    <div data-testid="galleryItem" className="itemCard">
       <h3>{item.title}</h3>
       {details ? (
         <>

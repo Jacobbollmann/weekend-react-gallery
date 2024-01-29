@@ -1,7 +1,9 @@
+import './Header.css';
+
 function Header() {
   return (
-    <div>
-      <h1>React Gallery</h1>
+    <div className="header">
+      <h1>Pick Your Poison</h1>
     </div>
   );
 }

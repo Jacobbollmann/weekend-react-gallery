@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { fetchItems } from './galleryApi/galleryApi';
+import { fetchItems } from '../../galleryApi/galleryApi';
 import GalleryList from '../GalleryList/GalleryList';
 import Header from '../Header/Header';
 
