@@ -37,4 +37,24 @@ router.get('/', (req, res) => {
     });
 });
 
+//POST /gallery
+router.post('/', (req, res) => {
+  const newItem = req.body;
+  const queryArgs = [newItem.url, newItem.title, newItem.description];
+  const dbQuery = `
+    INSERT INTO "gallery" ("url", "title", "description")
+    VALUES ($1, $2, $3);`;
+
+  pool
+    .query(dbQuery, queryArgs)
+    .then((result) => {
+      res.send('Item added').status(200);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+      alert('Something Wrong in post');
+    });
+});
+
 module.exports = router;
